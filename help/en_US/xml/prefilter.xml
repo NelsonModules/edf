@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xmldoc>
+  <copyright>SAME AS NELSON SOFTWARE</copyright>
+  <language>en_US</language>
+  <keyword>edf.prefilter</keyword>
+  <short_description>Parse a prefilter field into structured cut-offs.</short_description>
+  <syntax>
+    <syntax_item>f = edf.prefilter(text)</syntax_item>
+  </syntax>
+  <param_input>
+    <param_input_item>
+      <param_name>text</param_name>
+      <param_description>a signal's prefilter field, for example 'HP:0.1Hz LP:75Hz N:50Hz'.</param_description>
+    </param_input_item>
+  </param_input>
+  <param_output>
+    <param_output_item>
+      <param_name>f</param_name>
+      <param_description>a struct with highpass, lowpass and notch in hertz (NaN when absent) and raw, the text as written.</param_description>
+    </param_output_item>
+  </param_output>
+  <description>
+    <p>The field has no rigid grammar; the common form naming a high-pass, a low-pass and a notch is understood. Every signal returned by edf.read already carries these as its highpass, lowpass and notch fields; this function is for a field in hand.</p>
+  </description>
+  <used_function />
+  <bibliography />
+  <examples>
+    <example_item>
+      <example_item_type>nelson</example_item_type>
+      <example_item_description />
+      <example_item_data><![CDATA[f = edf.prefilter('HP:0.3Hz LP:35Hz')]]></example_item_data>
+    </example_item>
+  </examples>
+  <see_also>
+    <see_also_item>
+      <link linkend="${edf}edf.read">edf.read</link>
+    </see_also_item>
+  </see_also>
+  <history>
+    <history_item>
+      <history_version>1.0.0</history_version>
+      <history_description>initial version</history_description>
+    </history_item>
+  </history>
+  <authors>
+    <author_item>Allan CORNET</author_item>
+  </authors>
+</xmldoc>

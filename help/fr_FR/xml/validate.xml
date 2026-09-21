@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xmldoc>
+  <copyright>SAME AS NELSON SOFTWARE</copyright>
+  <language>fr_FR</language>
+  <keyword>edf.validate</keyword>
+  <short_description>Verifie un fichier au regard de la specification EDF, EDF+, BDF et BDF+.</short_description>
+  <syntax>
+    <syntax_item>report = edf.validate(file)</syntax_item>
+    <syntax_item>edf.validate(file, 'Fix', dst)</syntax_item>
+  </syntax>
+  <param_input>
+    <param_input_item>
+      <param_name>file</param_name>
+      <param_description>le chemin a verifier.</param_description>
+    </param_input_item>
+    <param_input_item>
+      <param_name>dst</param_name>
+      <param_description>avec 'Fix', le chemin d'une copie reparee.</param_description>
+    </param_input_item>
+  </param_input>
+  <param_output>
+    <param_output_item>
+      <param_name>report</param_name>
+      <param_description>une structure avec valid (aucun probleme trouve), type, problems (un cellstr de ce qui brise le format) et warnings (un cellstr de ce qui est inhabituel mais tolere).</param_description>
+    </param_output_item>
+  </param_output>
+  <description>
+    <p>Il verifie la signature, le nombre de signaux, le nombre d'octets d'entete, la duree d'enregistrement, les plages physiques et numeriques et le nombre d'enregistrements par rapport a la taille du fichier, et, pour un fichier '+', la presence d'un canal d'annotations ; et il ne leve jamais d'erreur, si bien que c'est la premiere chose a lancer sur un fichier ecrit par un autre outil.</p>
+    <p>Avec <b>'Fix', dst</b> il ecrit aussi une copie avec le nombre d'octets d'entete et le nombre d'enregistrements recalcules depuis le fichier lui-meme, ce qui repare les deux champs le plus souvent laisses faux par un ecrivain arrete trop tot.</p>
+  </description>
+  <used_function />
+  <bibliography />
+  <examples>
+    <example_item>
+      <example_item_type>nelson</example_item_type>
+      <example_item_description />
+      <example_item_data><![CDATA[report = edf.validate('suspect.edf');
+if ~report.valid
+  disp(report.problems);
+end]]></example_item_data>
+    </example_item>
+  </examples>
+  <see_also>
+    <see_also_item>
+      <link linkend="${edf}edf.isedf">edf.isedf</link>
+    </see_also_item>
+    <see_also_item>
+      <link linkend="${edf}edf.read">edf.read</link>
+    </see_also_item>
+  </see_also>
+  <history>
+    <history_item>
+      <history_version>1.0.0</history_version>
+      <history_description>version initiale</history_description>
+    </history_item>
+  </history>
+  <authors>
+    <author_item>Allan CORNET</author_item>
+  </authors>
+</xmldoc>

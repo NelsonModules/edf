@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xmldoc>
+  <copyright>SAME AS NELSON SOFTWARE</copyright>
+  <language>en_US</language>
+  <module_name>edf</module_name>
+  <chapter>edf</chapter>
+  <chapter_description>
+    <p>Read and write EDF, EDF+, BDF and BDF+ biosignal files.</p>
+    <p>The European Data Format (EDF) and its 'plus' extension (EDF+) are the interchange formats every sleep, EEG and Holter system reads and writes; BDF and BDF+ are BioSemi's 24-bit variants. This module owns the binary format in one place and returns a domain-free struct, so a reader that gets the header arithmetic, the little-endian samples or the 24-bit assembly wrong cannot return a signal that looks plausible and is wrong. It is designed to be a dependency of higher-level toolboxes rather than to interpret the signals itself.</p>
+  </chapter_description>
+</xmldoc>

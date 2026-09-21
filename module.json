@@ -1,0 +1,36 @@
+{
+    "module":"edf",
+    "title":"European Data Format toolbox",
+    "summary":"Read and write EDF, EDF+, BDF and BDF+ biosignal files.",
+    "version":"1.0.0",
+    "description":"A toolbox that owns the EDF, EDF+, BDF and BDF+ binary format and returns a domain-free struct. Read and write signals and annotations, inspect headers, window and resample, decode BDF triggers, edit, crop, merge, anonymize, validate and convert units. Designed to be a dependency of higher-level toolboxes such as ecglab and sleeplab.",
+    "authors":[
+        "Allan CORNET"
+    ],
+    "keywords":[
+        "edf",
+        "edf+",
+        "bdf",
+        "bdf+",
+        "biosignal",
+        "eeg",
+        "ecg",
+        "emg",
+        "polysomnography",
+        "sleep",
+        "physionet",
+        "biosemi",
+        "annotations"
+    ],
+    "license":"LGPL-3.0-or-later",
+    "repository":"https://github.com/NelsonModules/edf",
+    "homepage":"https://github.com/NelsonModules/edf",
+    "builtin":false,
+    "platforms":[
+        "all"
+    ],
+    "nelson":">=2.0.0",
+    "dependencies":{
+        
+    }
+}

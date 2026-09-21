@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xmldoc>
+  <copyright>SAME AS NELSON SOFTWARE</copyright>
+  <language>en_US</language>
+  <keyword>edf.compare</keyword>
+  <short_description>Check whether two files carry the same signals and header.</short_description>
+  <syntax>
+    <syntax_item>report = edf.compare(a, b)</syntax_item>
+    <syntax_item>report = edf.compare(a, b, 'Tolerance', t)</syntax_item>
+  </syntax>
+  <param_input>
+    <param_input_item>
+      <param_name>a, b</param_name>
+      <param_description>the two files to compare, as paths or structs from edf.read.</param_description>
+    </param_input_item>
+    <param_input_item>
+      <param_name>t</param_name>
+      <param_description>the allowed per-signal sample difference in physical units (default 0, an exact match); the header fields are always compared exactly.</param_description>
+    </param_input_item>
+  </param_input>
+  <param_output>
+    <param_output_item>
+      <param_name>report</param_name>
+      <param_description>a struct with equal (whether nothing differs beyond the tolerance) and differences (a cellstr naming what does).</param_description>
+    </param_output_item>
+  </param_output>
+  <description>
+    <p>The check a round trip needs: write a file, read it back and compare. Fields a struct on its way to disk does not carry (type, record count) are compared only when both sides have them, so an input struct can be checked against the file it produced.</p>
+  </description>
+  <used_function />
+  <bibliography />
+  <examples>
+    <example_item>
+      <example_item_type>nelson</example_item_type>
+      <example_item_description />
+      <example_item_data><![CDATA[edf.write('copy.edf', edf.read('record.edf'));
+report = edf.compare('record.edf', 'copy.edf', 'Tolerance', 1e-6);]]></example_item_data>
+    </example_item>
+  </examples>
+  <see_also>
+    <see_also_item>
+      <link linkend="${edf}edf.read">edf.read</link>
+    </see_also_item>
+    <see_also_item>
+      <link linkend="${edf}edf.validate">edf.validate</link>
+    </see_also_item>
+  </see_also>
+  <history>
+    <history_item>
+      <history_version>1.0.0</history_version>
+      <history_description>initial version</history_description>
+    </history_item>
+  </history>
+  <authors>
+    <author_item>Allan CORNET</author_item>
+  </authors>
+</xmldoc>

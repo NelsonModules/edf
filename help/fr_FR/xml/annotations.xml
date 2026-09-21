@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xmldoc>
+  <copyright>SAME AS NELSON SOFTWARE</copyright>
+  <language>fr_FR</language>
+  <keyword>edf.annotations</keyword>
+  <short_description>Lit la liste d'annotations d'un fichier EDF+ ou BDF+.</short_description>
+  <syntax>
+    <syntax_item>a = edf.annotations(file)</syntax_item>
+  </syntax>
+  <param_input>
+    <param_input_item>
+      <param_name>file</param_name>
+      <param_description>le chemin du fichier.</param_description>
+    </param_input_item>
+  </param_input>
+  <param_output>
+    <param_output_item>
+      <param_name>a</param_name>
+      <param_description>un tableau de structures avec onset (secondes), duration (secondes) et text ; vide quand le fichier n'a pas de canal d'annotations.</param_description>
+    </param_output_item>
+  </param_output>
+  <description>
+    <p>Les signaux ne sont pas renvoyes, seul le canal d'annotations est analyse. L'horodatage qui ouvre chaque enregistrement ne porte pas de texte et n'est pas liste.</p>
+  </description>
+  <used_function />
+  <bibliography />
+  <examples>
+    <example_item>
+      <example_item_type>nelson</example_item_type>
+      <example_item_description />
+      <example_item_data><![CDATA[a = edf.annotations('record.edf');
+for k = 1:numel(a)
+  printf('%.3f s (%.3f s) : %s\n', a(k).onset, a(k).duration, a(k).text);
+end]]></example_item_data>
+    </example_item>
+  </examples>
+  <see_also>
+    <see_also_item>
+      <link linkend="${edf}edf.read">edf.read</link>
+    </see_also_item>
+    <see_also_item>
+      <link linkend="${edf}edf.write">edf.write</link>
+    </see_also_item>
+  </see_also>
+  <history>
+    <history_item>
+      <history_version>1.0.0</history_version>
+      <history_description>version initiale</history_description>
+    </history_item>
+  </history>
+  <authors>
+    <author_item>Allan CORNET</author_item>
+  </authors>
+</xmldoc>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xmldoc>
+  <copyright>SAME AS NELSON SOFTWARE</copyright>
+  <language>fr_FR</language>
+  <keyword>edf.read</keyword>
+  <short_description>Lit un fichier EDF, EDF+, BDF ou BDF+ dans la structure neutre.</short_description>
+  <syntax>
+    <syntax_item>r = edf.read(file)</syntax_item>
+    <syntax_item>r = edf.read(file, 'Signals', which)</syntax_item>
+    <syntax_item>r = edf.read(file, 'Annotations', tf)</syntax_item>
+    <syntax_item>r = edf.read(file, 'Data', tf)</syntax_item>
+  </syntax>
+  <param_input>
+    <param_input_item>
+      <param_name>file</param_name>
+      <param_description>le chemin du fichier EDF, EDF+, BDF ou BDF+.</param_description>
+    </param_input_item>
+    <param_input_item>
+      <param_name>which</param_name>
+      <param_description>les signaux ordinaires a conserver, par etiquette (un char ou un cellstr) ou par indice ; par defaut tous les signaux ordinaires.</param_description>
+    </param_input_item>
+    <param_input_item>
+      <param_name>tf</param_name>
+      <param_description>un booleen : 'Annotations' pour analyser le canal d'annotations (vrai par defaut), 'Data' pour lire les echantillons (vrai par defaut).</param_description>
+    </param_input_item>
+  </param_input>
+  <param_output>
+    <param_output_item>
+      <param_name>r</param_name>
+      <param_description>la structure neutre : l'entete, une entree par signal ordinaire a son propre taux en unites physiques, et les annotations.</param_description>
+    </param_output_item>
+  </param_output>
+  <description>
+    <p>L'unique lecteur du format binaire EDF, EDF+, BDF et BDF+. Il renvoie une structure sans hypothese de domaine : rien n'y suppose des derivations, des evenements de sommeil ou une autre interpretation.</p>
+    <p>Un entier stocke devient une valeur physique par <b>physical = (digital - dmin) * (pmax - pmin) / (dmax - dmin) + pmin</b>. EDF stocke chaque echantillon sur deux octets (int16 signe), BDF sur trois (int24 signe) ; les deux sont en petit-boutiste. Le bloc de donnees est lu en une passe.</p>
+    <p>La structure renvoyee possede les champs <b>file</b>, <b>type</b> ('EDF', 'EDF+', 'BDF' ou 'BDF+'), <b>family</b>, <b>continuous</b>, <b>version</b>, <b>patient</b>, <b>recording</b>, <b>startdate</b>, <b>starttime</b>, <b>startDateTime</b>, <b>reserved</b>, <b>records</b>, <b>duration</b>, <b>ns</b>, <b>signals</b> (un tableau de structures) et <b>annotations</b> (un tableau de structures avec onset, duration et text).</p>
+    <p>Le canal d'annotations n'est jamais renvoye comme signal ; c'est un flux d'octets portant des listes d'annotations horodatees (TAL). Chaque texte devient une annotation avec son onset en secondes ; l'horodatage qui ouvre chaque enregistrement a un texte vide et n'en porte aucune.</p>
+  </description>
+  <used_function />
+  <bibliography>Kemp et Olivan, European data format 'plus' (EDF+), Clinical Neurophysiology 114(9), 2003 ; Kemp et coll., A simple format for exchange of digitized polygraphic recordings, 1992 ; format de donnees BioSemi (BDF).</bibliography>
+  <examples>
+    <example_item>
+      <example_item_type>nelson</example_item_type>
+      <example_item_description />
+      <example_item_data><![CDATA[r = edf.read('record.edf');
+plot((0:numel(r.signals(1).data) - 1) / r.signals(1).rate, r.signals(1).data);]]></example_item_data>
+    </example_item>
+  </examples>
+  <see_also>
+    <see_also_item>
+      <link linkend="${edf}edf.write">edf.write</link>
+    </see_also_item>
+    <see_also_item>
+      <link linkend="${edf}edf.header">edf.header</link>
+    </see_also_item>
+    <see_also_item>
+      <link linkend="${edf}edf.annotations">edf.annotations</link>
+    </see_also_item>
+  </see_also>
+  <history>
+    <history_item>
+      <history_version>1.0.0</history_version>
+      <history_description>version initiale</history_description>
+    </history_item>
+  </history>
+  <authors>
+    <author_item>Allan CORNET</author_item>
+  </authors>
+</xmldoc>

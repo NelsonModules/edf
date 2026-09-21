@@ -1,0 +1,18 @@
+# Extra paths to keep OUT of the installable package (.nmz), on top of nmm's
+# built-in excludes (.git/, build/, bin/, CMake artifacts, editor and OS noise).
+# gitignore-style patterns, relative to the module root. loader.m and the built
+# gateway in builtin/ are force-included by nmm, so do not list them here.
+.github/
+.editorconfig
+
+# Native sources and headers, at any depth: a builtin module ships only the
+# prebuilt gateway (builtin/*.dll). Remove these lines to ship the C/C++ sources
+# too (e.g. to allow rebuilding on another platform).
+*.cpp
+*.hpp
+*.h
+
+# Help XML sources: only the compiled help/*.nhz ships (nmm install keeps the
+# prebuilt .nhz; buildhelp is a no-op without the XML). Anchored to help/ so
+# example data such as examples/*.xml is preserved.
+help/**/*.xml

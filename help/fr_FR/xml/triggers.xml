@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xmldoc>
+  <copyright>SAME AS NELSON SOFTWARE</copyright>
+  <language>fr_FR</language>
+  <keyword>edf.triggers</keyword>
+  <short_description>Decode le canal de declenchement (Status BDF) en evenements.</short_description>
+  <syntax>
+    <syntax_item>events = edf.triggers(file)</syntax_item>
+    <syntax_item>events = edf.triggers(file, 'Channel', name)</syntax_item>
+    <syntax_item>events = edf.triggers(file, 'Mask', m)</syntax_item>
+  </syntax>
+  <param_input>
+    <param_input_item>
+      <param_name>file</param_name>
+      <param_description>le chemin du fichier.</param_description>
+    </param_input_item>
+    <param_input_item>
+      <param_name>name</param_name>
+      <param_description>l'etiquette du canal de declenchement (defaut 'Status', le canal BDF de BioSemi).</param_description>
+    </param_input_item>
+    <param_input_item>
+      <param_name>m</param_name>
+      <param_description>le masque de bits a conserver (defaut 65535, les 16 bits bas qui portent les entrees de declenchement).</param_description>
+    </param_input_item>
+  </param_input>
+  <param_output>
+    <param_output_item>
+      <param_name>events</param_name>
+      <param_description>un tableau de structures avec onset (secondes), sample (base 1) et code, un par front montant vers un code non nul.</param_description>
+    </param_output_item>
+  </param_output>
+  <description>
+    <p>Le canal est lu en codes numeriques bruts, jamais mis a l'echelle physique, car ses bits sont un code et non une mesure. Un declenchement est un echantillon ou le code masque change par rapport au precedent vers une valeur non nulle.</p>
+  </description>
+  <used_function />
+  <bibliography>Canal Status du format BioSemi (BDF).</bibliography>
+  <examples>
+    <example_item>
+      <example_item_type>nelson</example_item_type>
+      <example_item_description />
+      <example_item_data><![CDATA[ev = edf.triggers('session.bdf');
+codes = [ev.code];]]></example_item_data>
+    </example_item>
+  </examples>
+  <see_also>
+    <see_also_item>
+      <link linkend="${edf}edf.read">edf.read</link>
+    </see_also_item>
+    <see_also_item>
+      <link linkend="${edf}edf.annotations">edf.annotations</link>
+    </see_also_item>
+  </see_also>
+  <history>
+    <history_item>
+      <history_version>1.0.0</history_version>
+      <history_description>version initiale</history_description>
+    </history_item>
+  </history>
+  <authors>
+    <author_item>Allan CORNET</author_item>
+  </authors>
+</xmldoc>

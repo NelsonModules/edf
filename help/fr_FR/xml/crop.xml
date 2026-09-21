@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xmldoc>
+  <copyright>SAME AS NELSON SOFTWARE</copyright>
+  <language>fr_FR</language>
+  <keyword>edf.crop</keyword>
+  <short_description>Ecrit une fenetre temporelle d'un fichier dans un nouveau fichier.</short_description>
+  <syntax>
+    <syntax_item>edf.crop(src, dst, t0, t1)</syntax_item>
+    <syntax_item>edf.crop(src, dst, t0, t1, 'Signals', which)</syntax_item>
+    <syntax_item>edf.crop(src, dst, t0, t1, 'RecordSeconds', s)</syntax_item>
+    <syntax_item>info = edf.crop(...)</syntax_item>
+  </syntax>
+  <param_input>
+    <param_input_item>
+      <param_name>src</param_name>
+      <param_description>le fichier source.</param_description>
+    </param_input_item>
+    <param_input_item>
+      <param_name>dst</param_name>
+      <param_description>le fichier destination.</param_description>
+    </param_input_item>
+    <param_input_item>
+      <param_name>t0, t1</param_name>
+      <param_description>la fenetre en secondes, T1 superieur a T0.</param_description>
+    </param_input_item>
+    <param_input_item>
+      <param_name>which</param_name>
+      <param_description>les signaux a conserver, par etiquette ou par indice.</param_description>
+    </param_input_item>
+    <param_input_item>
+      <param_name>s</param_name>
+      <param_description>la duree d'enregistrement de la sortie ; par defaut celle de la source.</param_description>
+    </param_input_item>
+  </param_input>
+  <param_output>
+    <param_output_item>
+      <param_name>info</param_name>
+      <param_description>l'info edf.write du fichier ecrit.</param_description>
+    </param_output_item>
+  </param_output>
+  <description>
+    <p>La fenetre garde la variante de la source et les plages physiques de ses signaux, et re-base les annotations pour qu'un onset soit mesure depuis le nouveau debut. Chaque signal est decoupe a son propre taux, si bien que des signaux de taux differents restent alignes.</p>
+  </description>
+  <used_function />
+  <bibliography />
+  <examples>
+    <example_item>
+      <example_item_type>nelson</example_item_type>
+      <example_item_description />
+      <example_item_data><![CDATA[% Garder de la minute deux a la minute cinq.
+edf.crop('night.edf', 'clip.edf', 120, 300);]]></example_item_data>
+    </example_item>
+  </examples>
+  <see_also>
+    <see_also_item>
+      <link linkend="${edf}edf.read">edf.read</link>
+    </see_also_item>
+    <see_also_item>
+      <link linkend="${edf}edf.write">edf.write</link>
+    </see_also_item>
+  </see_also>
+  <history>
+    <history_item>
+      <history_version>1.0.0</history_version>
+      <history_description>version initiale</history_description>
+    </history_item>
+  </history>
+  <authors>
+    <author_item>Allan CORNET</author_item>
+  </authors>
+</xmldoc>

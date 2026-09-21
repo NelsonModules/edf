@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xmldoc>
+  <copyright>SAME AS NELSON SOFTWARE</copyright>
+  <language>fr_FR</language>
+  <keyword>edf.convert</keyword>
+  <short_description>Convertit les signaux de tension vers une unite cible.</short_description>
+  <syntax>
+    <syntax_item>r = edf.convert(source, target)</syntax_item>
+  </syntax>
+  <param_input>
+    <param_input_item>
+      <param_name>source</param_name>
+      <param_description>un chemin de fichier ou une structure issue de edf.read.</param_description>
+    </param_input_item>
+    <param_input_item>
+      <param_name>target</param_name>
+      <param_description>l'unite cible : 'V', 'mV', 'uV' ou 'nV'.</param_description>
+    </param_input_item>
+  </param_input>
+  <param_output>
+    <param_output_item>
+      <param_name>r</param_name>
+      <param_description>la structure avec chaque signal de tension mis a l'echelle vers l'unite cible (data, plage physique et unite) ; un signal non tension est laisse intact.</param_description>
+    </param_output_item>
+  </param_output>
+  <description>
+    <p>Un montage mixte ne convertit que ce qu'il peut : un signal dont l'unite n'est pas une tension de la famille V garde ses echantillons et son unite.</p>
+  </description>
+  <used_function />
+  <bibliography />
+  <examples>
+    <example_item>
+      <example_item_type>nelson</example_item_type>
+      <example_item_description />
+      <example_item_data><![CDATA[r = edf.convert('eeg.edf', 'uV');]]></example_item_data>
+    </example_item>
+  </examples>
+  <see_also>
+    <see_also_item>
+      <link linkend="${edf}edf.read">edf.read</link>
+    </see_also_item>
+  </see_also>
+  <history>
+    <history_item>
+      <history_version>1.0.0</history_version>
+      <history_description>version initiale</history_description>
+    </history_item>
+  </history>
+  <authors>
+    <author_item>Allan CORNET</author_item>
+  </authors>
+</xmldoc>

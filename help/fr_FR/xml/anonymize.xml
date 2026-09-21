@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xmldoc>
+  <copyright>SAME AS NELSON SOFTWARE</copyright>
+  <language>fr_FR</language>
+  <keyword>edf.anonymize</keyword>
+  <short_description>Copie un fichier en effacant les champs d'entete identifiants.</short_description>
+  <syntax>
+    <syntax_item>edf.anonymize(src, dst)</syntax_item>
+    <syntax_item>edf.anonymize(src, dst, 'StartDate', false)</syntax_item>
+    <syntax_item>edf.anonymize(src, dst, 'ShiftDays', n)</syntax_item>
+  </syntax>
+  <param_input>
+    <param_input_item>
+      <param_name>src</param_name>
+      <param_description>le fichier source.</param_description>
+    </param_input_item>
+    <param_input_item>
+      <param_name>dst</param_name>
+      <param_description>le fichier destination.</param_description>
+    </param_input_item>
+  </param_input>
+  <param_output />
+  <description>
+    <p>Le fichier est copie octet par octet sauf les champs d'entete qui nomment une personne ou un jour : le champ patient devient <b>X X X X</b> (le patient anonyme du format), l'identification d'enregistrement garde son mot-cle 'Startdate' mais perd le reste, et la date de debut devient '01.01.85'. Les signaux, les annotations et tout autre octet sont intacts. Passer <b>'StartDate', false</b> laisse la date en place.</p>
+    <p>Passer <b>'ShiftDays', n</b> pour garder une date mais la decaler de n jours au lieu de l'effacer, si bien que le timing relatif entre des fichiers decales du meme n est preserve tandis que la vraie date est cachee.</p>
+  </description>
+  <used_function />
+  <bibliography />
+  <examples>
+    <example_item>
+      <example_item_type>nelson</example_item_type>
+      <example_item_description />
+      <example_item_data><![CDATA[edf.anonymize('patient.edf', 'anonymous.edf');]]></example_item_data>
+    </example_item>
+  </examples>
+  <see_also>
+    <see_also_item>
+      <link linkend="${edf}edf.read">edf.read</link>
+    </see_also_item>
+  </see_also>
+  <history>
+    <history_item>
+      <history_version>1.0.0</history_version>
+      <history_description>version initiale</history_description>
+    </history_item>
+  </history>
+  <authors>
+    <author_item>Allan CORNET</author_item>
+  </authors>
+</xmldoc>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xmldoc>
+  <copyright>SAME AS NELSON SOFTWARE</copyright>
+  <language>fr_FR</language>
+  <keyword>edf.write</keyword>
+  <short_description>Ecrit la structure neutre dans un fichier EDF, EDF+, BDF ou BDF+.</short_description>
+  <syntax>
+    <syntax_item>edf.write(file, r)</syntax_item>
+    <syntax_item>edf.write(file, r, 'Format', fmt)</syntax_item>
+    <syntax_item>edf.write(file, r, 'RecordSeconds', s)</syntax_item>
+    <syntax_item>edf.write(file, r, 'Annotations', a)</syntax_item>
+    <syntax_item>edf.write(file, r, 'Margin', m)</syntax_item>
+    <syntax_item>info = edf.write(...)</syntax_item>
+  </syntax>
+  <param_input>
+    <param_input_item>
+      <param_name>file</param_name>
+      <param_description>le chemin a ecrire.</param_description>
+    </param_input_item>
+    <param_input_item>
+      <param_name>r</param_name>
+      <param_description>une structure avec un champ 'signals', un tableau de structures dont chaque entree porte un vecteur data et un taux rate ; les champs facultatifs label, unit, transducer, prefilter et la plage physique ou numerique sont utilises quand ils existent.</param_description>
+    </param_input_item>
+    <param_input_item>
+      <param_name>fmt</param_name>
+      <param_description>la variante : 'EDF+' (defaut), 'EDF', 'BDF+' ou 'BDF'. Les variantes '+' portent le canal d'annotations ; BDF stocke chaque echantillon sur trois octets.</param_description>
+    </param_input_item>
+    <param_input_item>
+      <param_name>s</param_name>
+      <param_description>la duree d'un enregistrement en secondes (defaut 1).</param_description>
+    </param_input_item>
+    <param_input_item>
+      <param_name>a</param_name>
+      <param_description>un tableau de structures avec onset, duration facultatif et text, ecrit dans le canal d'annotations a la place de r.annotations.</param_description>
+    </param_input_item>
+    <param_input_item>
+      <param_name>m</param_name>
+      <param_description>la fraction d'elargissement de la plage physique d'un signal qui n'en porte pas (defaut 0.0015).</param_description>
+    </param_input_item>
+  </param_input>
+  <param_output>
+    <param_output_item>
+      <param_name>info</param_name>
+      <param_description>ce qui a ete ecrit : le type, le nombre d'enregistrements, les echantillons par enregistrement de chaque signal, la quantification de chaque signal, si le dernier enregistrement a ete complete et la taille en octets.</param_description>
+    </param_output_item>
+  </param_output>
+  <description>
+    <p>L'unique ecrivain du format binaire EDF, EDF+, BDF et BDF+. Il produit un fichier que tout outil peut lire et que ce module relit sans perte au-dela de la quantification.</p>
+    <p>La plage numerique vaut par defaut l'etendue complete de la variante (16 bits signes pour EDF, 24 bits signes pour BDF). Un signal muni d'un physicalMin et d'un physicalMax explicites les conserve ; sinon la plage est le minimum et le maximum de ses donnees avec une petite marge.</p>
+    <p>La longueur n'a pas besoin d'etre un nombre entier d'enregistrements ; le dernier enregistrement partiel est complete par le minimum physique, et info.padded le signale. Les signaux de taux differents sont pris en charge.</p>
+  </description>
+  <used_function />
+  <bibliography>Kemp et Olivan, European data format 'plus' (EDF+), Clinical Neurophysiology 114(9), 2003 ; format de donnees BioSemi (BDF).</bibliography>
+  <examples>
+    <example_item>
+      <example_item_type>nelson</example_item_type>
+      <example_item_description />
+      <example_item_data><![CDATA[r.signals = struct('label', {'ECG'}, 'unit', {'mV'}, 'rate', {250}, ...
+  'data', {sin(2 * pi * (0:2499) / 250)'});
+edf.write('out.edf', r);]]></example_item_data>
+    </example_item>
+  </examples>
+  <see_also>
+    <see_also_item>
+      <link linkend="${edf}edf.read">edf.read</link>
+    </see_also_item>
+  </see_also>
+  <history>
+    <history_item>
+      <history_version>1.0.0</history_version>
+      <history_description>version initiale</history_description>
+    </history_item>
+  </history>
+  <authors>
+    <author_item>Allan CORNET</author_item>
+  </authors>
+</xmldoc>

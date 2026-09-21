@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xmldoc>
+  <copyright>SAME AS NELSON SOFTWARE</copyright>
+  <language>fr_FR</language>
+  <keyword>edf.tobytes</keyword>
+  <short_description>Ecrit la structure neutre dans un vecteur d'octets, pas un fichier.</short_description>
+  <syntax>
+    <syntax_item>bytes = edf.tobytes(r)</syntax_item>
+    <syntax_item>bytes = edf.tobytes(r, ...)</syntax_item>
+  </syntax>
+  <param_input>
+    <param_input_item>
+      <param_name>r</param_name>
+      <param_description>la structure neutre a ecrire (voir edf.write).</param_description>
+    </param_input_item>
+    <param_input_item>
+      <param_name>...</param_name>
+      <param_description>toute option de edf.write (Format, RecordSeconds, Annotations, Margin).</param_description>
+    </param_input_item>
+  </param_input>
+  <param_output>
+    <param_output_item>
+      <param_name>bytes</param_name>
+      <param_description>un vecteur uint8 des octets du fichier.</param_description>
+    </param_output_item>
+  </param_output>
+  <description>
+    <p>Pour un fichier qui sera envoye par une connexion ou garde en memoire plutot qu'enregistre. Nelson n'a pas de descripteur de fichier en memoire, donc le fichier est ecrit dans un fichier temporaire, relu, puis le fichier temporaire est supprime ; rien n'est laisse derriere.</p>
+  </description>
+  <used_function />
+  <bibliography />
+  <examples>
+    <example_item>
+      <example_item_type>nelson</example_item_type>
+      <example_item_description />
+      <example_item_data><![CDATA[bytes = edf.tobytes(r, 'Format', 'BDF+');]]></example_item_data>
+    </example_item>
+  </examples>
+  <see_also>
+    <see_also_item>
+      <link linkend="${edf}edf.frombytes">edf.frombytes</link>
+    </see_also_item>
+    <see_also_item>
+      <link linkend="${edf}edf.write">edf.write</link>
+    </see_also_item>
+  </see_also>
+  <history>
+    <history_item>
+      <history_version>1.0.0</history_version>
+      <history_description>version initiale</history_description>
+    </history_item>
+  </history>
+  <authors>
+    <author_item>Allan CORNET</author_item>
+  </authors>
+</xmldoc>

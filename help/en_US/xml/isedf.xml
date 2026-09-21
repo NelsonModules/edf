@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xmldoc>
+  <copyright>SAME AS NELSON SOFTWARE</copyright>
+  <language>en_US</language>
+  <keyword>edf.isedf</keyword>
+  <short_description>Probe a file for the EDF, EDF+, BDF or BDF+ format.</short_description>
+  <syntax>
+    <syntax_item>result = edf.isedf(file)</syntax_item>
+  </syntax>
+  <param_input>
+    <param_input_item>
+      <param_name>file</param_name>
+      <param_description>the path to probe.</param_description>
+    </param_input_item>
+  </param_input>
+  <param_output>
+    <param_output_item>
+      <param_name>result</param_name>
+      <param_description>the flavour as a text ('EDF', 'EDF+', 'BDF' or 'BDF+'), or false when the file is none of these.</param_description>
+    </param_output_item>
+  </param_output>
+  <description>
+    <p>It reads only the first bytes and never throws on a file that is not an EDF or BDF, so it can be asked of any path.</p>
+  </description>
+  <used_function />
+  <bibliography />
+  <examples>
+    <example_item>
+      <example_item_type>nelson</example_item_type>
+      <example_item_description />
+      <example_item_data><![CDATA[if edf.isedf('mystery.dat')
+  r = edf.read('mystery.dat');
+end]]></example_item_data>
+    </example_item>
+  </examples>
+  <see_also>
+    <see_also_item>
+      <link linkend="${edf}edf.read">edf.read</link>
+    </see_also_item>
+    <see_also_item>
+      <link linkend="${edf}edf.validate">edf.validate</link>
+    </see_also_item>
+  </see_also>
+  <history>
+    <history_item>
+      <history_version>1.0.0</history_version>
+      <history_description>initial version</history_description>
+    </history_item>
+  </history>
+  <authors>
+    <author_item>Allan CORNET</author_item>
+  </authors>
+</xmldoc>

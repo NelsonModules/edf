@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xmldoc>
+  <copyright>SAME AS NELSON SOFTWARE</copyright>
+  <language>en_US</language>
+  <keyword>edf.read</keyword>
+  <short_description>Read an EDF, EDF+, BDF or BDF+ file into the neutral struct.</short_description>
+  <syntax>
+    <syntax_item>r = edf.read(file)</syntax_item>
+    <syntax_item>r = edf.read(file, 'Signals', which)</syntax_item>
+    <syntax_item>r = edf.read(file, 'Annotations', tf)</syntax_item>
+    <syntax_item>r = edf.read(file, 'Data', tf)</syntax_item>
+  </syntax>
+  <param_input>
+    <param_input_item>
+      <param_name>file</param_name>
+      <param_description>the path to the EDF, EDF+, BDF or BDF+ file.</param_description>
+    </param_input_item>
+    <param_input_item>
+      <param_name>which</param_name>
+      <param_description>the ordinary signals to keep, by label (a char or a cellstr) or by index; by default every ordinary signal.</param_description>
+    </param_input_item>
+    <param_input_item>
+      <param_name>tf</param_name>
+      <param_description>a logical: 'Annotations' whether to parse the annotation channel (true by default), 'Data' whether to read the samples (true by default).</param_description>
+    </param_input_item>
+  </param_input>
+  <param_output>
+    <param_output_item>
+      <param_name>r</param_name>
+      <param_description>the neutral struct: the header, one entry per ordinary signal at its own rate in physical units, and the annotations.</param_description>
+    </param_output_item>
+  </param_output>
+  <description>
+    <p>The one reader of the EDF, EDF+, BDF and BDF+ binary format. It returns a domain-free struct: nothing in it assumes leads, sleep events or any other interpretation.</p>
+    <p>A stored integer becomes a physical value by <b>physical = (digital - dmin) * (pmax - pmin) / (dmax - dmin) + pmin</b>. EDF stores each sample in two bytes (signed int16), BDF in three (signed int24); both are little-endian. The whole data block is read in one pass and reshaped, because a night at 250 Hz is over a hundred million values.</p>
+    <p>The returned struct has the fields <b>file</b>, <b>type</b> ('EDF', 'EDF+', 'BDF' or 'BDF+'), <b>family</b>, <b>continuous</b>, <b>version</b>, <b>patient</b>, <b>recording</b>, <b>startdate</b>, <b>starttime</b>, <b>startDateTime</b>, <b>reserved</b>, <b>records</b>, <b>duration</b>, <b>ns</b>, <b>signals</b> (a struct array with label, transducer, unit, prefilter, physicalMin, physicalMax, digitalMin, digitalMax, samplesPerRecord, rate and data) and <b>annotations</b> (a struct array with onset, duration and text).</p>
+    <p>The annotation channel is never returned as a signal; it is a byte stream carrying time-stamped annotation lists (TALs). Each text becomes an annotation with its onset in seconds; the time-keeping stamp that opens each record has an empty text and carries none.</p>
+  </description>
+  <used_function />
+  <bibliography>Kemp and Olivan, European data format 'plus' (EDF+), Clinical Neurophysiology 114(9), 2003; Kemp et al., A simple format for exchange of digitized polygraphic recordings, Electroencephalography and Clinical Neurophysiology 82(5), 1992; BioSemi data format (BDF).</bibliography>
+  <examples>
+    <example_item>
+      <example_item_type>nelson</example_item_type>
+      <example_item_description />
+      <example_item_data><![CDATA[r = edf.read('record.edf');
+plot((0:numel(r.signals(1).data) - 1) / r.signals(1).rate, r.signals(1).data);]]></example_item_data>
+    </example_item>
+  </examples>
+  <see_also>
+    <see_also_item>
+      <link linkend="${edf}edf.write">edf.write</link>
+    </see_also_item>
+    <see_also_item>
+      <link linkend="${edf}edf.header">edf.header</link>
+    </see_also_item>
+    <see_also_item>
+      <link linkend="${edf}edf.annotations">edf.annotations</link>
+    </see_also_item>
+  </see_also>
+  <history>
+    <history_item>
+      <history_version>1.0.0</history_version>
+      <history_description>initial version</history_description>
+    </history_item>
+  </history>
+  <authors>
+    <author_item>Allan CORNET</author_item>
+  </authors>
+</xmldoc>

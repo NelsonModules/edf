@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xmldoc>
+  <copyright>SAME AS NELSON SOFTWARE</copyright>
+  <language>fr_FR</language>
+  <module_name>edf</module_name>
+  <chapter>edf</chapter>
+  <chapter_description>
+    <p>Lecture et ecriture de fichiers de biosignaux EDF, EDF+, BDF et BDF+.</p>
+    <p>Le European Data Format (EDF) et son extension 'plus' (EDF+) sont les formats d'echange que lit et ecrit tout systeme de sommeil, d'EEG et de Holter ; BDF et BDF+ en sont les variantes 24 bits de BioSemi. Ce module possede le format binaire en un seul endroit et renvoie une structure sans hypothese de domaine, si bien qu'un lecteur qui se trompe dans l'arithmetique de l'entete, l'ordre des octets ou l'assemblage 24 bits ne peut pas renvoyer un signal plausible et faux. Il est concu pour etre une dependance de bibliotheques de plus haut niveau plutot que d'interpreter lui-meme les signaux.</p>
+  </chapter_description>
+</xmldoc>

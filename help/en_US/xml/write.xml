@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xmldoc>
+  <copyright>SAME AS NELSON SOFTWARE</copyright>
+  <language>en_US</language>
+  <keyword>edf.write</keyword>
+  <short_description>Write the neutral struct to an EDF, EDF+, BDF or BDF+ file.</short_description>
+  <syntax>
+    <syntax_item>edf.write(file, r)</syntax_item>
+    <syntax_item>edf.write(file, r, 'Format', fmt)</syntax_item>
+    <syntax_item>edf.write(file, r, 'RecordSeconds', s)</syntax_item>
+    <syntax_item>edf.write(file, r, 'Annotations', a)</syntax_item>
+    <syntax_item>edf.write(file, r, 'Margin', m)</syntax_item>
+    <syntax_item>info = edf.write(...)</syntax_item>
+  </syntax>
+  <param_input>
+    <param_input_item>
+      <param_name>file</param_name>
+      <param_description>the path to write.</param_description>
+    </param_input_item>
+    <param_input_item>
+      <param_name>r</param_name>
+      <param_description>a struct with a 'signals' field, a struct array whose entries carry a data vector and a rate; the optional label, unit, transducer, prefilter and physical or digital range are used when present and defaulted when not.</param_description>
+    </param_input_item>
+    <param_input_item>
+      <param_name>fmt</param_name>
+      <param_description>the flavour: 'EDF+' (default), 'EDF', 'BDF+' or 'BDF'. The '+' flavours carry the annotation channel; BDF stores each sample in three bytes.</param_description>
+    </param_input_item>
+    <param_input_item>
+      <param_name>s</param_name>
+      <param_description>the length of a data record in seconds (default 1).</param_description>
+    </param_input_item>
+    <param_input_item>
+      <param_name>a</param_name>
+      <param_description>a struct array with onset, optional duration and text, written to the annotation channel instead of r.annotations.</param_description>
+    </param_input_item>
+    <param_input_item>
+      <param_name>m</param_name>
+      <param_description>the fraction by which a signal's own physical range is widened when it does not carry one (default 0.0015).</param_description>
+    </param_input_item>
+  </param_input>
+  <param_output>
+    <param_output_item>
+      <param_name>info</param_name>
+      <param_description>what was laid down: the type, the number of records, the samples per record of each signal, the annotation samples per record, the quantisation of each signal, whether the last record was padded and the byte size.</param_description>
+    </param_output_item>
+  </param_output>
+  <description>
+    <p>The one writer of the EDF, EDF+, BDF and BDF+ binary format. It lays down a file any tool can read and this module reads back without loss beyond the quantisation.</p>
+    <p>The digital range defaults to the flavour's full span (signed 16 bits for EDF, signed 24 bits for BDF), so the quantisation of a signal is its physical span divided by that digital span. A signal with an explicit physicalMin and physicalMax keeps them; otherwise the range is its data's minimum and maximum with a small margin so the extremes are not pinned to the rails.</p>
+    <p>The recording's length need not be a whole number of records; the last partial record is padded with the physical minimum, and info.padded says so. Signals of different rates are supported, each contributing its own whole number of samples per record.</p>
+  </description>
+  <used_function />
+  <bibliography>Kemp and Olivan, European data format 'plus' (EDF+), Clinical Neurophysiology 114(9), 2003; BioSemi data format (BDF).</bibliography>
+  <examples>
+    <example_item>
+      <example_item_type>nelson</example_item_type>
+      <example_item_description />
+      <example_item_data><![CDATA[r.signals = struct('label', {'ECG'}, 'unit', {'mV'}, 'rate', {250}, ...
+  'data', {sin(2 * pi * (0:2499) / 250)'});
+edf.write('out.edf', r);]]></example_item_data>
+    </example_item>
+  </examples>
+  <see_also>
+    <see_also_item>
+      <link linkend="${edf}edf.read">edf.read</link>
+    </see_also_item>
+  </see_also>
+  <history>
+    <history_item>
+      <history_version>1.0.0</history_version>
+      <history_description>initial version</history_description>
+    </history_item>
+  </history>
+  <authors>
+    <author_item>Allan CORNET</author_item>
+  </authors>
+</xmldoc>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xmldoc>
+  <copyright>SAME AS NELSON SOFTWARE</copyright>
+  <language>fr_FR</language>
+  <keyword>edf.frombytes</keyword>
+  <short_description>Lit un fichier EDF ou BDF deja en memoire.</short_description>
+  <syntax>
+    <syntax_item>r = edf.frombytes(bytes)</syntax_item>
+    <syntax_item>r = edf.frombytes(bytes, ...)</syntax_item>
+  </syntax>
+  <param_input>
+    <param_input_item>
+      <param_name>bytes</param_name>
+      <param_description>un vecteur uint8 des octets du fichier.</param_description>
+    </param_input_item>
+    <param_input_item>
+      <param_name>...</param_name>
+      <param_description>toute option de edf.read (Signals, Annotations, Data, Records, Interval, ...).</param_description>
+    </param_input_item>
+  </param_input>
+  <param_output>
+    <param_output_item>
+      <param_name>r</param_name>
+      <param_description>la meme structure neutre que renvoie edf.read.</param_description>
+    </param_output_item>
+  </param_output>
+  <description>
+    <p>Pour des donnees arrivees par une connexion ou depuis une archive sans jamais avoir ete un fichier. Nelson n'a pas de descripteur de fichier en memoire, donc les octets sont ecrits dans un fichier temporaire, lus, puis le fichier temporaire est supprime ; rien n'est laisse derriere.</p>
+  </description>
+  <used_function />
+  <bibliography />
+  <examples>
+    <example_item>
+      <example_item_type>nelson</example_item_type>
+      <example_item_description />
+      <example_item_data><![CDATA[bytes = edf.tobytes(r);
+back = edf.frombytes(bytes);]]></example_item_data>
+    </example_item>
+  </examples>
+  <see_also>
+    <see_also_item>
+      <link linkend="${edf}edf.tobytes">edf.tobytes</link>
+    </see_also_item>
+    <see_also_item>
+      <link linkend="${edf}edf.read">edf.read</link>
+    </see_also_item>
+  </see_also>
+  <history>
+    <history_item>
+      <history_version>1.0.0</history_version>
+      <history_description>version initiale</history_description>
+    </history_item>
+  </history>
+  <authors>
+    <author_item>Allan CORNET</author_item>
+  </authors>
+</xmldoc>

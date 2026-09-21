@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xmldoc>
+  <copyright>SAME AS NELSON SOFTWARE</copyright>
+  <language>fr_FR</language>
+  <keyword>edf.channeltype</keyword>
+  <short_description>Devine le type d'un signal d'apres son etiquette.</short_description>
+  <syntax>
+    <syntax_item>kind = edf.channeltype(label)</syntax_item>
+    <syntax_item>kind = edf.channeltype(label, transducer)</syntax_item>
+  </syntax>
+  <param_input>
+    <param_input_item>
+      <param_name>label</param_name>
+      <param_description>l'etiquette du signal.</param_description>
+    </param_input_item>
+    <param_input_item>
+      <param_name>transducer</param_name>
+      <param_description>un texte de transducteur facultatif qui affine le choix.</param_description>
+    </param_input_item>
+  </param_input>
+  <param_output>
+    <param_output_item>
+      <param_name>kind</param_name>
+      <param_description>l'un de 'eeg', 'eog', 'ecg', 'emg', 'resp', 'spo2', 'status' ou 'misc'.</param_description>
+    </param_output_item>
+  </param_output>
+  <description>
+    <p>C'est un indice tire du texte de l'etiquette, pas une mesure du signal, donc volontairement grossier ; un module de domaine l'affine. Chaque signal renvoye par edf.read le porte deja dans son champ kind.</p>
+  </description>
+  <used_function />
+  <bibliography />
+  <examples>
+    <example_item>
+      <example_item_type>nelson</example_item_type>
+      <example_item_description />
+      <example_item_data><![CDATA[edf.channeltype('C3-A2')   % 'eeg'
+edf.channeltype('SpO2')    % 'spo2']]></example_item_data>
+    </example_item>
+  </examples>
+  <see_also>
+    <see_also_item>
+      <link linkend="${edf}edf.read">edf.read</link>
+    </see_also_item>
+  </see_also>
+  <history>
+    <history_item>
+      <history_version>1.0.0</history_version>
+      <history_description>version initiale</history_description>
+    </history_item>
+  </history>
+  <authors>
+    <author_item>Allan CORNET</author_item>
+  </authors>
+</xmldoc>

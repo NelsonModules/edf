@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xmldoc>
+  <copyright>SAME AS NELSON SOFTWARE</copyright>
+  <language>fr_FR</language>
+  <keyword>edf.compare</keyword>
+  <short_description>Verifie si deux fichiers portent les memes signaux et entete.</short_description>
+  <syntax>
+    <syntax_item>report = edf.compare(a, b)</syntax_item>
+    <syntax_item>report = edf.compare(a, b, 'Tolerance', t)</syntax_item>
+  </syntax>
+  <param_input>
+    <param_input_item>
+      <param_name>a, b</param_name>
+      <param_description>les deux fichiers a comparer, en chemins ou en structures issues de edf.read.</param_description>
+    </param_input_item>
+    <param_input_item>
+      <param_name>t</param_name>
+      <param_description>l'ecart d'echantillons autorise par signal en unites physiques (defaut 0, une egalite exacte) ; les champs d'entete sont toujours compares exactement.</param_description>
+    </param_input_item>
+  </param_input>
+  <param_output>
+    <param_output_item>
+      <param_name>report</param_name>
+      <param_description>une structure avec equal (rien ne differe au-dela de la tolerance) et differences (un cellstr nommant ce qui differe).</param_description>
+    </param_output_item>
+  </param_output>
+  <description>
+    <p>La verification dont a besoin un aller-retour : ecrire un fichier, le relire et comparer. Les champs qu'une structure en route vers le disque ne porte pas (type, nombre d'enregistrements) ne sont compares que si les deux cotes les ont, si bien qu'une structure d'entree peut etre verifiee contre le fichier qu'elle a produit.</p>
+  </description>
+  <used_function />
+  <bibliography />
+  <examples>
+    <example_item>
+      <example_item_type>nelson</example_item_type>
+      <example_item_description />
+      <example_item_data><![CDATA[edf.write('copy.edf', edf.read('record.edf'));
+report = edf.compare('record.edf', 'copy.edf', 'Tolerance', 1e-6);]]></example_item_data>
+    </example_item>
+  </examples>
+  <see_also>
+    <see_also_item>
+      <link linkend="${edf}edf.read">edf.read</link>
+    </see_also_item>
+    <see_also_item>
+      <link linkend="${edf}edf.validate">edf.validate</link>
+    </see_also_item>
+  </see_also>
+  <history>
+    <history_item>
+      <history_version>1.0.0</history_version>
+      <history_description>version initiale</history_description>
+    </history_item>
+  </history>
+  <authors>
+    <author_item>Allan CORNET</author_item>
+  </authors>
+</xmldoc>

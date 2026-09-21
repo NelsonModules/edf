@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xmldoc>
+  <copyright>SAME AS NELSON SOFTWARE</copyright>
+  <language>en_US</language>
+  <keyword>edf.validate</keyword>
+  <short_description>Check a file against the EDF, EDF+, BDF and BDF+ specification.</short_description>
+  <syntax>
+    <syntax_item>report = edf.validate(file)</syntax_item>
+    <syntax_item>edf.validate(file, 'Fix', dst)</syntax_item>
+  </syntax>
+  <param_input>
+    <param_input_item>
+      <param_name>file</param_name>
+      <param_description>the path to check.</param_description>
+    </param_input_item>
+    <param_input_item>
+      <param_name>dst</param_name>
+      <param_description>with 'Fix', the path of a repaired copy.</param_description>
+    </param_input_item>
+  </param_input>
+  <param_output>
+    <param_output_item>
+      <param_name>report</param_name>
+      <param_description>a struct with valid (no problem found), type, problems (a cellstr of what breaks the format) and warnings (a cellstr of what is unusual but tolerated).</param_description>
+    </param_output_item>
+  </param_output>
+  <description>
+    <p>It checks the magic, the number of signals, the header byte count, the record duration, the physical and digital ranges and the record count against the file size, and, for a '+' file, the presence of an annotation channel; and it never throws, so it is the first thing to run on a file another tool wrote.</p>
+    <p>With <b>'Fix', dst</b> it also writes a copy with the header byte count and the record count recomputed from the file itself, which repairs the two fields most often left wrong by a writer that stopped early.</p>
+  </description>
+  <used_function />
+  <bibliography />
+  <examples>
+    <example_item>
+      <example_item_type>nelson</example_item_type>
+      <example_item_description />
+      <example_item_data><![CDATA[report = edf.validate('suspect.edf');
+if ~report.valid
+  disp(report.problems);
+end]]></example_item_data>
+    </example_item>
+  </examples>
+  <see_also>
+    <see_also_item>
+      <link linkend="${edf}edf.isedf">edf.isedf</link>
+    </see_also_item>
+    <see_also_item>
+      <link linkend="${edf}edf.read">edf.read</link>
+    </see_also_item>
+  </see_also>
+  <history>
+    <history_item>
+      <history_version>1.0.0</history_version>
+      <history_description>initial version</history_description>
+    </history_item>
+  </history>
+  <authors>
+    <author_item>Allan CORNET</author_item>
+  </authors>
+</xmldoc>

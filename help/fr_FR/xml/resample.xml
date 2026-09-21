@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xmldoc>
+  <copyright>SAME AS NELSON SOFTWARE</copyright>
+  <language>fr_FR</language>
+  <keyword>edf.resample</keyword>
+  <short_description>Ramene tous les signaux a un taux commun dans une matrice alignee.</short_description>
+  <syntax>
+    <syntax_item>out = edf.resample(source, rate)</syntax_item>
+    <syntax_item>out = edf.resample(source, rate, 'Method', m)</syntax_item>
+  </syntax>
+  <param_input>
+    <param_input_item>
+      <param_name>source</param_name>
+      <param_description>un chemin de fichier ou une structure issue de edf.read.</param_description>
+    </param_input_item>
+    <param_input_item>
+      <param_name>rate</param_name>
+      <param_description>le taux commun en hertz.</param_description>
+    </param_input_item>
+    <param_input_item>
+      <param_name>m</param_name>
+      <param_description>l'interpolation : 'linear' (defaut) ou 'nearest' (maintien d'ordre zero, pour un canal en escalier ou code).</param_description>
+    </param_input_item>
+  </param_input>
+  <param_output>
+    <param_output_item>
+      <param_name>out</param_name>
+      <param_description>une structure avec data (une matrice, une colonne par signal), t (le vecteur temps en secondes), rate, labels et units.</param_description>
+    </param_output_item>
+  </param_output>
+  <description>
+    <p>Un taux commun unique est ce dont a besoin une analyse qui lit tous les canaux sur une meme ligne de temps ; edf.read garde au contraire chaque signal a son taux natif. Le temps cible est borne a l'etendue propre de chaque signal, si bien qu'aucune valeur n'est extrapolee au-dela de son dernier echantillon.</p>
+  </description>
+  <used_function />
+  <bibliography />
+  <examples>
+    <example_item>
+      <example_item_type>nelson</example_item_type>
+      <example_item_description />
+      <example_item_data><![CDATA[out = edf.resample('record.edf', 200);
+size(out.data)]]></example_item_data>
+    </example_item>
+  </examples>
+  <see_also>
+    <see_also_item>
+      <link linkend="${edf}edf.read">edf.read</link>
+    </see_also_item>
+  </see_also>
+  <history>
+    <history_item>
+      <history_version>1.0.0</history_version>
+      <history_description>version initiale</history_description>
+    </history_item>
+  </history>
+  <authors>
+    <author_item>Allan CORNET</author_item>
+  </authors>
+</xmldoc>

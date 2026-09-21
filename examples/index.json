@@ -1,0 +1,3 @@
+{"schemaVersion":1,"examples":[
+  {"file":"read_write_demo.m","title":{"en_US":"Read, inspect and write EDF","fr_FR":"Lire, inspecter et ecrire un EDF"},"description":{"en_US":"A tour of the toolbox on the shipped example file: info, reading, picking channels by kind, the annotations, unit conversion, a round trip checked with edf.compare, and a cropped clip.","fr_FR":"Une visite de la toolbox sur le fichier d'exemple livre : info, lecture, choix des canaux par type, les annotations, la conversion d'unites, un aller-retour verifie avec edf.compare, et un extrait decoupe."},"tags":["edf","read","write","beginner"],"requirements":[]}
+]}

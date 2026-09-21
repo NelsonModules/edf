@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xmldoc>
+  <copyright>SAME AS NELSON SOFTWARE</copyright>
+  <language>en_US</language>
+  <keyword>edf.merge</keyword>
+  <short_description>Concatenate compatible EDF or BDF files end to end in time.</short_description>
+  <syntax>
+    <syntax_item>edf.merge(dst, sources)</syntax_item>
+    <syntax_item>edf.merge(dst, sources, 'RecordSeconds', s)</syntax_item>
+    <syntax_item>info = edf.merge(...)</syntax_item>
+  </syntax>
+  <param_input>
+    <param_input_item>
+      <param_name>dst</param_name>
+      <param_description>the destination file.</param_description>
+    </param_input_item>
+    <param_input_item>
+      <param_name>sources</param_name>
+      <param_description>a cellstr of paths, read in order; every file must carry the same signals (labels and rates) as the first.</param_description>
+    </param_input_item>
+    <param_input_item>
+      <param_name>s</param_name>
+      <param_description>the output record length in seconds; the default is the first file's.</param_description>
+    </param_input_item>
+  </param_input>
+  <param_output>
+    <param_output_item>
+      <param_name>info</param_name>
+      <param_description>the edf.write info of the file written.</param_description>
+    </param_output_item>
+  </param_output>
+  <description>
+    <p>The signals are concatenated into one continuous recording; the annotations of each file are shifted by the time already written, so a mark keeps its place on the merged timeline. The physical range is recomputed over the merged data, so a value outside any one file's range is not clamped.</p>
+  </description>
+  <used_function />
+  <bibliography />
+  <examples>
+    <example_item>
+      <example_item_type>nelson</example_item_type>
+      <example_item_description />
+      <example_item_data><![CDATA[edf.merge('night.edf', {'part1.edf', 'part2.edf', 'part3.edf'});]]></example_item_data>
+    </example_item>
+  </examples>
+  <see_also>
+    <see_also_item>
+      <link linkend="${edf}edf.crop">edf.crop</link>
+    </see_also_item>
+    <see_also_item>
+      <link linkend="${edf}edf.write">edf.write</link>
+    </see_also_item>
+  </see_also>
+  <history>
+    <history_item>
+      <history_version>1.0.0</history_version>
+      <history_description>initial version</history_description>
+    </history_item>
+  </history>
+  <authors>
+    <author_item>Allan CORNET</author_item>
+  </authors>
+</xmldoc>

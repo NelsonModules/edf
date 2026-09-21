@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xmldoc>
+  <copyright>SAME AS NELSON SOFTWARE</copyright>
+  <language>en_US</language>
+  <keyword>edf.edit</keyword>
+  <short_description>Change header fields without re-encoding the samples.</short_description>
+  <syntax>
+    <syntax_item>edf.edit(file, name, value, ...)</syntax_item>
+    <syntax_item>edf.edit(file, ..., 'Output', dst)</syntax_item>
+  </syntax>
+  <param_input>
+    <param_input_item>
+      <param_name>file</param_name>
+      <param_description>the file to edit.</param_description>
+    </param_input_item>
+    <param_input_item>
+      <param_name>name, value</param_name>
+      <param_description>the fields to change: study-level 'Patient', 'Recording', 'StartDate' (dd.mm.yy), 'StartTime' (hh.mm.ss); per-signal 'Labels', 'Units', 'Transducers', 'Prefilters' (each a cellstr, one text per signal, the annotation channel included); or 'Rename', {old, new, ...}.</param_description>
+    </param_input_item>
+    <param_input_item>
+      <param_name>dst</param_name>
+      <param_description>with 'Output', write the edited file here instead of overwriting file.</param_description>
+    </param_input_item>
+  </param_input>
+  <param_output />
+  <description>
+    <p>The fixed-width ASCII header is patched and the data block is copied through byte for byte, so nothing is re-quantised. It is how a label, a unit or a patient field is corrected on an existing file without a lossy read and rewrite.</p>
+  </description>
+  <used_function />
+  <bibliography />
+  <examples>
+    <example_item>
+      <example_item_type>nelson</example_item_type>
+      <example_item_description />
+      <example_item_data><![CDATA[edf.edit('record.edf', 'Patient', 'X X X X', 'Rename', {'EEG1', 'C3-A2'});]]></example_item_data>
+    </example_item>
+  </examples>
+  <see_also>
+    <see_also_item>
+      <link linkend="${edf}edf.read">edf.read</link>
+    </see_also_item>
+    <see_also_item>
+      <link linkend="${edf}edf.anonymize">edf.anonymize</link>
+    </see_also_item>
+  </see_also>
+  <history>
+    <history_item>
+      <history_version>1.0.0</history_version>
+      <history_description>initial version</history_description>
+    </history_item>
+  </history>
+  <authors>
+    <author_item>Allan CORNET</author_item>
+  </authors>
+</xmldoc>
