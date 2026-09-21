@@ -11,5 +11,5 @@ if ~ismodule('edf')
   run([fileparts(nfilename('fullpath')), '/../loader.m']);
 end
 %=============================================================================
-assert_isequal(edf_version(), '1.0.0');
+assert_isequal(edf_version(), '1.0.1');
 %=============================================================================
